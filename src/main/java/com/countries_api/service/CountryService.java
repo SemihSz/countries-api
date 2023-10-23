@@ -13,5 +13,7 @@ public interface CountryService {
 
     List<CountriesResponse> getAllCountriesName();
 
+    List<Country> searchCountries(String countryName);
+
     void saveCountries();
 }

@@ -10,5 +10,7 @@ public interface CityService {
 
     List<CityModel> getAllCities();
 
+    List<CityModel> searchCities(String name);
+
     void saveCities();
 }

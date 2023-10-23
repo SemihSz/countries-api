@@ -6,6 +6,7 @@ import com.countries_api.model.response.CountriesResponse;
 import com.countries_api.service.CountryService;
 import com.countries_api.service.executable.GetAllCountriesService;
 import com.countries_api.service.executable.SaveCountiesService;
+import com.countries_api.service.executable.SearchCountriesNameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ public class CountryServiceImpl implements CountryService {
     private final GetAllCountriesService getAllCountriesService;
 
     private final SaveCountiesService saveCountiesService;
+
+    private final SearchCountriesNameService searchCountriesNameService;
 
     @Override
     public List<Country> getAllCountries() {
@@ -34,5 +37,10 @@ public class CountryServiceImpl implements CountryService {
     @Override
     public void saveCountries() {
         saveCountiesService.get();
+    }
+
+    @Override
+    public List<Country> searchCountries(String countryName) {
+        return searchCountriesNameService.apply(countryName);
     }
 }

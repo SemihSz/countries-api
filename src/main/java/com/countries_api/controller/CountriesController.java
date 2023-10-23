@@ -6,6 +6,7 @@ import com.countries_api.service.CountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,12 @@ public class CountriesController {
     public ResponseEntity<List<CountriesResponse>> getAllCountriesName() {
 
         return ResponseEntity.ok(countryService.getAllCountriesName());
+    }
+
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<Country>> searchCountriesName(@PathVariable("name") String countryName) {
+
+        return ResponseEntity.ok(countryService.searchCountries(countryName));
     }
 
     @GetMapping("/save")
